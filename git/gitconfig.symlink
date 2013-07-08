@@ -1,0 +1,57 @@
+[user]
+  email = pkunha@gmail.com
+  name = Pedro Cunha
+[merge]
+  tool = opendiff
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  br = branch
+  df = diff
+  lg = log -p
+  st = status -sb
+  ci = commit
+  co = checkout
+  staged = diff --cached
+  unstaged = diff
+  both = diff HEAD
+  logline = log --pretty=oneline
+  amend = commit --amend
+  plre = pull --rebase
+  unstage = reset HEAD
+  last = log -p -n1
+  today = log --since='1 Day Ago'
+  recent = log --stat --since='3 Hours Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+  me = log --author='Pedro Cunha'
+  ctags = !.git/hooks/ctags
+  prune-remotes = remote prune origin
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
+[format]
+  pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
+[core]
+  legacyheaders = false
+  editor = vim
+[push]
+  default = current
+[mergetool]
+  keepBackup = false
+[init]
+  templatedir = ~/.git_template
+[apply]
+  whitespace = nowarn
