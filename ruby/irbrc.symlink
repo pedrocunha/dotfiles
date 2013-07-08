@@ -31,10 +31,10 @@ class Object
   end
 end
 
-def me
-  User.find_by_login('holman')
-end
-
 def r
   reload!
+end
+
+if ENV['RAILS_ENV']
+  load "#{ENV['HOME']}/.railsrc"
 end
