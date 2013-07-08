@@ -1,0 +1,53 @@
+execute pathogen#infect()
+
+set nocompatible                " choose no compatibility with legacy vi
+syntax enable
+set encoding=utf-8
+set showcmd                     " display incomplete commands
+filetype plugin indent on       " load file type plugins + indentation
+
+"" Whitespace
+set nowrap                      " don't wrap lines
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set backspace=indent,eol,start  " backspace through everything in insert mode
+
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+set cursorline
+
+color jellybeans
+
+set number                          " show line numbers
+
+" ctrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+
+" noremap <leader>t :CtrlP<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+
+" Store temporary files in a central spot
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Fix slow O inserts
+:set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Go left and right between buffers
+nnoremap <c-o> :bp<CR>
+nnoremap <c-p> :bn<CR>
+
+" git fugitive
+noremap <leader>gb :Gblame<CR>
+
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+
+" Let ack.vim use ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
