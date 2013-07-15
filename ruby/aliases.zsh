@@ -5,10 +5,10 @@ alias sc='script/console'
 alias sg='script/generate'
 alias sd='script/destroy'
 
-alias migrate='be rake db:migrate db:test:prepare'
-
-alias be='bundle exec'
-alias bec='bundle exec cucumber'
-
+alias b='bundle'
+alias be='b exec'
+alias bec='be cucumber'
 alias po='be exec rake smartling:push smartling:pull'
 alias deploy='be cap $(git_branch) deploy'
+alias migrate='be rake db:migrate db:test:prepare'
+alias cc='be compass compile'
