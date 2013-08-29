@@ -1,0 +1,2 @@
+[mysqld]
+sql-mode=NO_FIELD_OPTIONS

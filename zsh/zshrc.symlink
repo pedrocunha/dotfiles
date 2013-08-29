@@ -47,3 +47,6 @@ export RUBY_HEAP_FREE_MIN=500000
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
+
+# HouseTrip goodies
+eval "$($HOME/.ht/bin/ht init -)"
