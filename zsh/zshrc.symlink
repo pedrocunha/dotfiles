@@ -50,3 +50,6 @@ bindkey -e '<ctrl-v><ctrl-e>' end-of-line
 
 # HouseTrip goodies
 eval "$($HOME/.ht/bin/ht init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
