@@ -20,6 +20,8 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 set cursorline
 
+set synmaxcol=200 " Limit syntax highlighting
+
 color jellybeans
 
 set number                          " show line numbers
