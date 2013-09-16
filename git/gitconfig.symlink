@@ -33,6 +33,7 @@
   both = diff HEAD
   logline = log --pretty=oneline
   amend = commit --amend
+  fixup = commit --amend --reuse-message HEAD
   plre = pull --rebase
   unstage = reset HEAD
   last = log -p -n1
