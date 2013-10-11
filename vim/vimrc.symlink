@@ -22,7 +22,7 @@ set cursorline
 
 set synmaxcol=200 " Limit syntax highlighting
 
-color jellybeans
+color hybrid
 
 set number                          " show line numbers
 
