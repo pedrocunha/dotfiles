@@ -52,9 +52,5 @@ noremap <leader>gb :Gblame<CR>
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 
-" Let ack.vim use ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-
 " Set ruby syntax highlight
 au BufRead,BufNewFile Gemfile setfiletype ruby
