@@ -31,7 +31,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 
-" noremap <leader>t :CtrlP<CR>
+noremap <leader>t :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
 
 " Store temporary files in a central spot
