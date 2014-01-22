@@ -1,7 +1,7 @@
 alias r='rbenv local 1.8.7-p358'
 
 alias ss='script/server'
-alias sc='script/console'
+alias sc='script/console --irb=pry'
 alias sg='script/generate'
 alias sd='script/destroy'
 
