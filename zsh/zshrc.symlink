@@ -39,11 +39,13 @@ done
 
 unset config_files
 
-export RUBY_HEAP_MIN_SLOTS=1000000
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+# Ruby GC - https://gist.github.com/865706
+export RUBY_HEAP_SLOTS_INCREMENT=10000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
+export RUBY_GC_HEAP_FREE_SLOTS=100000
+export RUBY_GC_HEAP_INIT_SLOTS=600000
 export RUBY_GC_MALLOC_LIMIT=1000000000
-export RUBY_HEAP_FREE_MIN=500000
+export RUBY_GC_HEAP_FREE_SLOTS=500000
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
