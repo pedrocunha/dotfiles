@@ -46,6 +46,17 @@ need_push () {
   fi
 }
 
+git_status () {
+  dirty=$(git_dirty)
+
+  if [[ $dirty == "" ]]
+  then
+    echo ''
+  else
+    echo "($dirty$(need_push))"
+  fi
+}
+
 rb_prompt(){
   if (( $+commands[rbenv] ))
   then
@@ -81,7 +92,8 @@ directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name)($(git_dirty)$(need_push))$ '
+
+export PROMPT=$'$(directory_name)$(git_status) '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }
