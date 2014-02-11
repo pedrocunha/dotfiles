@@ -54,7 +54,10 @@ nnoremap <tab> <c-w>l
 nnoremap <s-tab> <c-w>h
 
 " Remove highlight
-nnoremap Q :nohl<CR>
+nnoremap q :nohl<CR>
+
+nnoremap Q :quit<CR>
+
 
 " Dropbox notes
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
