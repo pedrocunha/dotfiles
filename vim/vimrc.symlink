@@ -12,6 +12,7 @@ set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
+set list listchars=tab:→\ ,trail:·
 
 "" Searching
 set hlsearch                    " highlight matches
@@ -45,7 +46,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Delete buffers
 nmap <leader>d <Plug>Kwbd
 
-" Go left and right between buffers
+" Cycling between buffers
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 
@@ -54,6 +55,10 @@ nnoremap q :nohl<CR>
 
 nnoremap Q :quit<CR>
 
+" Ctags
+nnoremap <leader>y :CtrlPTag<CR>
+" Follow tag
+nnoremap <leader>f :tag <cword><CR>
 
 " Dropbox notes
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
@@ -65,7 +70,7 @@ noremap <leader>gb :Gblame<CR>
 
 " RUBY + RAILS
 " Set ruby syntax highlight
-au BufRead,BufNewFile Gemfile setfiletype ruby
+au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 
 nnoremap <leader>r :! bundle exec spec %<CR>
