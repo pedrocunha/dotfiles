@@ -73,8 +73,13 @@ noremap <leader>gb :Gblame<CR>
 au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 
-nnoremap <leader>r :! bundle exec spec %<CR>
-nnoremap <leader>c :! bundle exec cucumber %<CR>
+if filereadable("bin/rails")
+  let g:vroom_spec_command = 'rspec'
+  let g:vroom_rspec_version = '3.x'
+else
+  let g:vroom_spec_command = 'spec'
+  let g:vroom_rspec_version = '1.x'
+endif
 
 " Highlight lines over 80 chars
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
