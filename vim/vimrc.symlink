@@ -44,7 +44,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 :set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Delete buffers
-nmap <leader>d <Plug>Kwbd
+nnoremap <leader>d :Kwbd<CR>
 
 " Cycling between buffers
 nnoremap <tab> :bn<CR>
