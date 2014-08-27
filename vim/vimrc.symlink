@@ -31,6 +31,8 @@ color hybrid
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
 
 noremap <leader>t :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
@@ -100,3 +102,5 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre *.rb :call TrimWhiteSpace()
 autocmd BufWritePre *.js :call TrimWhiteSpace()
+
+
