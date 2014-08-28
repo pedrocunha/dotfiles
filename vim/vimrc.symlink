@@ -22,8 +22,10 @@ set smartcase                   " ... unless they contain at least one capital l
 set cursorline
 
 "" Limit syntax highlighting
-set synmaxcol=200 
+set synmaxcol=200
 set number " show line numbers
+
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 color hybrid
 
@@ -33,9 +35,9 @@ let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
-
-noremap <leader>t :CtrlP<CR>
-noremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>y :CtrlPTag<CR>
 
 " Store temporary files in a central spot
 set backup
@@ -57,18 +59,12 @@ nnoremap q :nohl<CR>
 
 nnoremap Q :quit<CR>
 
-" Ctags
-nnoremap <leader>y :CtrlPTag<CR>
-" Follow tag
-nnoremap <leader>f :tag <cword><CR>
+nnoremap <leader>/ :Explore .<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>f :tag <cword><cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
-" Dropbox notes
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
-
-" git fugitive
-noremap <leader>gb :Gblame<CR>
-
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 " RUBY + RAILS
 " Set ruby syntax highlight
