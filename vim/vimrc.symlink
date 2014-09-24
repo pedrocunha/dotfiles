@@ -72,12 +72,12 @@ au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 
 let g:vroom_cucumber_path = 'cucumber'
-if filereadable("bin/rails")
-  let g:vroom_spec_command = 'rspec'
-  let g:vroom_rspec_version = '3.x'
-else
+if filereadable("script/server")
   let g:vroom_spec_command = 'spec'
   let g:vroom_rspec_version = '1.x'
+else
+  let g:vroom_spec_command = 'rspec'
+  let g:vroom_rspec_version = '3.x'
 endif
 
 " Highlight lines over 80 chars
