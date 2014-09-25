@@ -65,6 +65,10 @@ nnoremap <leader>f :tag <cword><cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
+" vim-fugitive
+nnoremap <leader>ta :A<cr>
+nnoremap <leader>tv :AV<cr>
+
 
 " RUBY + RAILS
 " Set ruby syntax highlight
