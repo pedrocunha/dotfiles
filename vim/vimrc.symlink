@@ -27,6 +27,8 @@ set number " show line numbers
 
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
+set shell=/bin/sh
+
 color hybrid
 
 " ctrlP
@@ -66,8 +68,8 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
 " vim-fugitive
-nnoremap <leader>ta :A<cr>
-nnoremap <leader>tv :AV<cr>
+nnoremap <leader>a :A<cr>
+nnoremap <leader>v :AV<cr>
 
 
 " RUBY + RAILS
