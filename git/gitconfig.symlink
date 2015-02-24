@@ -49,7 +49,7 @@
   legacyheaders = false
   editor = vim
 [push]
-  default = current
+	default = upstream
 [mergetool]
   keepBackup = false
 [init]
