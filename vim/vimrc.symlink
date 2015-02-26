@@ -67,9 +67,6 @@ nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
 " The Silver Searcher
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden
-
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
@@ -78,7 +75,7 @@ if executable('ag')
 endif
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :Ag! --hidden "\b<C-R><C-W>\b"<CR>
 
 " vim-fugitive
 nnoremap <leader>a :A<cr>
