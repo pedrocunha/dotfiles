@@ -55,7 +55,7 @@ nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 
 " Remove highlight
-nnoremap q :nohl<CR>
+nnoremap H :nohl<CR>
 
 nnoremap Q :quit<CR>
 
