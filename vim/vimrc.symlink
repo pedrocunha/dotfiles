@@ -19,10 +19,13 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-set cursorline
 
-"" Limit syntax highlighting
-set synmaxcol=200
+"" A must for fast scrolling
+set nocursorcolumn
+set nocursorline
+set norelativenumber
+syntax sync minlines=256
+
 set number " show line numbers
 
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
