@@ -58,7 +58,10 @@ nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 
 " Remove highlight
-nnoremap H :nohl<CR>
+nnoremap h :nohl<CR>
+
+" Close quickfix
+nnoremap <leader>q :ccl<CR>
 
 nnoremap Q :quit<CR>
 
