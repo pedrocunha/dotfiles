@@ -25,6 +25,9 @@ set nocursorcolumn
 set nocursorline
 set norelativenumber
 syntax sync minlines=256
+set ttyfast
+set ttyscroll=3
+set lazyredraw
 
 set number " show line numbers
 
