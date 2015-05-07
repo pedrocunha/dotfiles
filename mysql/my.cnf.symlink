@@ -1,11 +1,13 @@
 [mysqld]
 thread_concurrency = 16
-#log-bin=mysql-bin
-# binlog_format=mixed
 ft_min_word_len=3
 local-infile=1
 table_open_cache=800
 sql_mode=NO_ENGINE_SUBSTITUTION
+innodb_file_per_table
+innodb_flush_method=O_DIRECT
+innodb_log_file_size=1G
+innodb_buffer_pool_size=4G
 
 [mysqldump]
 quick
