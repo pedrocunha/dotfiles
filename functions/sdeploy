@@ -1,3 +1,2 @@
 #compdef sdeploy
-
 ht staging-deploy $1 --channel guestnps --user pedro.cunha --staging staging7

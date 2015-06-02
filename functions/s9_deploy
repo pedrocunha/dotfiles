@@ -1,0 +1,2 @@
+#compdef s9_deploy
+ht staging-deploy $1 --channel staging9 --user pedro.cunha --staging staging9
