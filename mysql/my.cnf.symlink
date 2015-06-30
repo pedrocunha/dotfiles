@@ -8,11 +8,12 @@ innodb_file_per_table
 innodb_flush_method=O_DIRECT
 innodb_log_file_size=1G
 innodb_buffer_pool_size=4G
+collation_server=utf8_unicode_ci
 
 [mysqldump]
 quick
 max_allowed_packet = 16M
 
 [mysql]
-no-auto-rehash
 local-infile=1
+character_set_server=utf8
