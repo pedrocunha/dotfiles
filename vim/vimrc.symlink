@@ -106,6 +106,7 @@ nnoremap <leader>v :AV<cr>
 " Set ruby syntax highlight
 au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
+au BufRead,BufNewFile *.god setfiletype ruby
 
 if filereadable("zeus.json")
   let g:vroom_use_zeus = 1
