@@ -104,14 +104,21 @@ nnoremap <leader>v :AV<cr>
 au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 
-let g:vroom_cucumber_path = 'cucumber'
-if filereadable("script/server")
-  let g:vroom_spec_command = 'spec'
-  let g:vroom_rspec_version = '1.x'
-else
-  let g:vroom_spec_command = 'rspec'
-  let g:vroom_rspec_version = '3.x'
+if filereadable("zeus.json")
+  let g:vroom_use_zeus = 1
 endif
+
+if filereadable("bin/spring")
+  let g:vroom_use_spring = 1
+endif
+
+if filereadable("bin/rspec")
+  let g:vroom_use_binstubs = 1
+endif
+
+let g:vroom_cucumber_path = 'cucumber'
+let g:vroom_spec_command  = 'rspec --format progress'
+let g:vroom_rspec_version = '3.x'
 
 " Highlight lines over 80 chars
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
