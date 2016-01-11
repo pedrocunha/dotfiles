@@ -4,6 +4,11 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 
+export LOLCOMMITS_DIR=$HOME/Dropbox/lolcommits
+export LOLCOMMITS_ANIMATE=5
+export LOLCOMMITS_FORK=true
+
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -38,14 +43,6 @@ do
 done
 
 unset config_files
-
-# Ruby GC - https://gist.github.com/865706
-export RUBY_HEAP_SLOTS_INCREMENT=10000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
-export RUBY_GC_HEAP_FREE_SLOTS=100000
-export RUBY_GC_HEAP_INIT_SLOTS=600000
-export RUBY_GC_MALLOC_LIMIT=1000000000
-export RUBY_GC_HEAP_FREE_SLOTS=500000
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
