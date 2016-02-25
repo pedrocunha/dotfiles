@@ -4,10 +4,11 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 
-export LOLCOMMITS_DIR=$HOME/Dropbox/lolcommits
+export LOLCOMMITS_DIR="$HOME/Dropbox (Pedro)/lolcommits"
 export LOLCOMMITS_ANIMATE=5
 export LOLCOMMITS_FORK=true
 
+export ORDERWEB_HOME=$PROJECTS/deliveroo/orderweb
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
