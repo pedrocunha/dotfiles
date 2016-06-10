@@ -51,14 +51,6 @@ set shell=/bin/sh
 
 color hybrid
 
-" ctrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_cmd = 'CtrlP'
-nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>y :CtrlPTag<CR>
-
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -88,6 +80,14 @@ nnoremap <leader>f :tag <cword><cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
+" ctrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>y :CtrlPTag<CR>
+
 " The Silver Searcher
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -100,13 +100,14 @@ if executable('ag')
   let g:airline#extensions#tabline#enabled = 1
 endif
 
-" bind K to grep word under cursor
-nnoremap K :Ag! --hidden "\b<C-R><C-W>\b"<CR>
+" use * to search current word in normal mode
+nmap * <Plug>AgActionWord
+" use * to search selected text in visual mode
+vmap * <Plug>AgActionVisual
 
 " vim-fugitive
 nnoremap <leader>a :A<cr>
 nnoremap <leader>v :AV<cr>
-
 
 " RUBY + RAILS
 " Set ruby syntax highlight
@@ -126,8 +127,7 @@ if filereadable("bin/rspec")
   let g:vroom_use_binstubs = 1
 endif
 
-let g:vroom_cucumber_path = 'cucumber'
-let g:vroom_spec_command  = 'rspec --format progress'
+let g:vroom_spec_command  = 'rspec --format progress --color'
 let g:vroom_rspec_version = '3.x'
 
 " Highlight lines over 80 chars
@@ -148,7 +148,6 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre *.rb :call TrimWhiteSpace()
 autocmd BufWritePre *.js :call TrimWhiteSpace()
-
 
 " Make those debugger statements painfully obvious
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
