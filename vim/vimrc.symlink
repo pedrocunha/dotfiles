@@ -101,9 +101,9 @@ if executable('ag')
 endif
 
 " use * to search current word in normal mode
-nmap * <Plug>AgActionWord
+nmap K <Plug>AgActionWord
 " use * to search selected text in visual mode
-vmap * <Plug>AgActionVisual
+vmap K <Plug>AgActionVisual
 
 " vim-fugitive
 nnoremap <leader>a :A<cr>
