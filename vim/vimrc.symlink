@@ -1,4 +1,21 @@
-execute pathogen#infect()
+call plug#begin()
+Plug 'vim-scripts/ag.vim'
+Plug 'vim-scripts/kwbdi.vim'
+Plug 'vim-scripts/closetag.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'skalnik/vim-vroom'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'Chun-Yang/vim-action-ag'
+Plug 'mhinz/vim-startify'
+call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
 syntax enable
@@ -30,7 +47,7 @@ set undoreload=10000            " number of lines to save for undo
 
 "" A must for fast scrolling
 set nocursorcolumn
-set nocursorline
+set cursorline
 set norelativenumber
 syntax sync minlines=256
 set ttyfast
@@ -65,6 +82,7 @@ nmap <leader>d <Plug>Kwbd
 " Cycling between buffers
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
+nnoremap <leader><leader> :b#<CR>
 
 " Remove highlight
 nnoremap h :nohl<CR>
@@ -73,6 +91,9 @@ nnoremap h :nohl<CR>
 nnoremap <leader>q :ccl<CR>
 
 nnoremap Q :quit<CR>
+
+" Run last command
+nnoremap <leader><leader> @:
 
 nnoremap <leader>/ :Explore .<cr>
 nnoremap <leader>w :w<cr>
@@ -92,12 +113,9 @@ nnoremap <leader>y :CtrlPTag<CR>
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
-
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  let g:airline#extensions#tabline#enabled = 1
 endif
 
 " use * to search current word in normal mode
@@ -116,6 +134,10 @@ au BufRead,BufNewFile *.ru setfiletype ruby
 au BufRead,BufNewFile *.god setfiletype ruby
 
 if filereadable("zeus.json")
+  let g:vroom_use_zeus = 1
+endif
+
+if filereadable("../../zeus.json")
   let g:vroom_use_zeus = 1
 endif
 
