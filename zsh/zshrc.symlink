@@ -5,9 +5,6 @@ export ZSH=$HOME/.dotfiles
 export PROJECTS=~/code
 
 export LOLCOMMITS_DIR="$HOME/Dropbox (Pedro)/lolcommits"
-export LOLCOMMITS_ANIMATE=5
-export LOLCOMMITS_FORK=true
-
 export ORDERWEB_HOME=$PROJECTS/deliveroo/orderweb
 
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -47,3 +44,8 @@ unset config_files
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
+eval "$(rbenv init -)"
