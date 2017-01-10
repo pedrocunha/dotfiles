@@ -43,6 +43,7 @@
   ctags = !.git/hooks/ctags
   prune-remotes = remote prune origin
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  pf = push --force-with-lease
 [format]
   pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 [core]
