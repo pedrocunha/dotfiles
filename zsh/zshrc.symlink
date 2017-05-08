@@ -1,11 +1,8 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
-
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
-
 export LOLCOMMITS_DIR="$HOME/Dropbox (Pedro)/lolcommits"
-export ORDERWEB_HOME=$PROJECTS/deliveroo/orderweb
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -30,9 +27,12 @@ do
   source $file
 done
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
@@ -44,9 +44,6 @@ unset config_files
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
-
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
 
 eval "$(rbenv init -)"
 
