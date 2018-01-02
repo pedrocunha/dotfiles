@@ -15,6 +15,7 @@ Plug 'maxboisvert/vim-simple-complete'
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
+Plug 'cespare/vim-toml'
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
