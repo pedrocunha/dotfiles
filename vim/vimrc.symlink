@@ -17,6 +17,7 @@ Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'cespare/vim-toml'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
