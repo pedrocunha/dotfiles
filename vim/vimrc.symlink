@@ -84,7 +84,6 @@ nmap <leader>d <Plug>Kwbd
 " Cycling between buffers
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
-nnoremap <leader><leader> :b#<CR>
 
 " Remove highlight
 nnoremap h :nohl<CR>
@@ -93,9 +92,6 @@ nnoremap h :nohl<CR>
 nnoremap <leader>q :ccl<CR>
 
 nnoremap Q :quit<CR>
-
-" Run last command
-nnoremap <leader><leader> @:
 
 nnoremap <leader>/ :Explore .<cr>
 nnoremap <leader>w :w<cr>
@@ -117,9 +113,13 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 nmap K :call fzf#vim#ag(expand('<cword>'))<CR>
 vmap K :call fzf#vim#ag(expand('<cword>'))<CR>
 
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 " vim-fugitive
 nnoremap <leader>a :A<cr>
 nnoremap <leader>v :AV<cr>
+
+nnoremap <leader><leader> <C-w>=
 
 " RUBY + RAILS
 " Set ruby syntax highlight
