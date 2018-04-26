@@ -173,6 +173,8 @@ set complete+=kspell                  " add spell check to autocompletes (invoke
 set complete-=t                       " dont use tag and includes for autocompletes
 set complete-=i                       " (gives better performance)
 
+set iskeyword+=- " foo-bar is a whole word "
+
 " Annoying bindings
 nmap <S-Down> <nop>
 nmap <S-Up> <nop>
