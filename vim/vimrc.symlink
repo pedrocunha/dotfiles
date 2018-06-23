@@ -7,11 +7,10 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'kien/ctrlp.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'skalnik/vim-vroom'
-" Plug 'mileszs/ack.vim'
-" Plug 'Chun-Yang/vim-action-ag'
 Plug 'maxboisvert/vim-simple-complete'
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
