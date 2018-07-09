@@ -177,3 +177,11 @@ set iskeyword+=- " foo-bar is a whole word "
 " Annoying bindings
 nmap <S-Down> <nop>
 nmap <S-Up> <nop>
+
+" golang settings
+let g:go_doc_keywordprg_enabled = 0
+
+nnoremap <leader>g :GoTest<cr>
+nnoremap <leader>gd :GoDoc<cr>
+
+let g:ale_list_window_size = 5
