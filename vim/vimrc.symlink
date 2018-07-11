@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
@@ -184,4 +185,4 @@ let g:go_doc_keywordprg_enabled = 0
 nnoremap <leader>g :GoTest<cr>
 nnoremap <leader>gd :GoDoc<cr>
 
-let g:ale_list_window_size = 5
+let g:go_fmt_command = "goimports"
