@@ -182,6 +182,23 @@ nmap <S-Up> <nop>
 " golang settings
 let g:go_doc_keywordprg_enabled = 0
 
+" Highlight commonly used library types (`io.Reader`, etc.).
+let g:go_highlight_extra_types = 1
+
+" Highlight operators such as `:=` , `==`, `-=`, etc.
+let g:go_highlight_operators = 1
+
+" Highlight function and method declarations.
+let g:go_highlight_functions = 1
+
+" Highlight the variable names in arguments and return values in function
+" declarations. Setting this implies the functionality from
+" |'g:go_highlight_functions'|.
+let g:go_highlight_function_arguments = 1
+
+" Highlight struct and interface names.
+let g:go_highlight_types = 1
+
 nnoremap <leader>g :GoTest<cr>
 nnoremap <leader>gd :GoDoc<cr>
 
