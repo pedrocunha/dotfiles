@@ -146,10 +146,6 @@ endif
 let g:vroom_spec_command  = 'rspec --format progress --color'
 let g:vroom_rspec_version = '3.x'
 
-" Highlight lines over 80 chars
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
-
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -179,7 +175,7 @@ set iskeyword+=- " foo-bar is a whole word "
 nmap <S-Down> <nop>
 nmap <S-Up> <nop>
 
-" golang settings
+" +++++++++++++++++ golang settings
 let g:go_doc_keywordprg_enabled = 0
 
 " Highlight commonly used library types (`io.Reader`, etc.).
@@ -203,3 +199,22 @@ nnoremap <leader>g :GoTest<cr>
 nnoremap <leader>gd :GoDoc<cr>
 
 let g:go_fmt_command = "goimports"
+" +++++++++++++++++ golang settings
+
+autocmd BufRead,TextChanged,TextChangedI *.go call ShowColumnIfLineTooLong(80)
+autocmd BufRead,TextChanged,TextChangedI *.rb call ShowColumnIfLineTooLong(80)
+
+" Color the column marking the lengthLimit when the longest line in the file
+" exceeds the lengthLimit
+function! ShowColumnIfLineTooLong(lengthLimit)
+  " See https://stackoverflow.com/questions/2075276/longest-line-in-vim#2982789
+  let maxLineLength = max(map(getline(1,'$'), 'len(v:val)'))
+
+  if maxLineLength > a:lengthLimit
+    highlight ColorColumn ctermbg=red guibg=red
+    " Draw the vertical line at the first letter that exceeds the limit
+    execute "set colorcolumn=" . (a:lengthLimit + 1)
+  else
+    set colorcolumn=""
+  endif
+endfunction
