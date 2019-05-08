@@ -7,5 +7,6 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin/:$PATH"
 export PATH="/Applications/SnowSQL.app/Contents/MacOS/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
