@@ -160,10 +160,13 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre *.rb :call TrimWhiteSpace()
 autocmd BufWritePre *.js :call TrimWhiteSpace()
+autocmd BufWritePre *.py :call TrimWhiteSpace()
 
 " Make those debugger statements painfully obvious
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<debugger\>"
+au BufEnter *.py syn match error contained "\<import ipdb\>"
+au BufEnter *.py syn match error contained "\<ipdb.set_trace()\>"
 
 set complete+=kspell                  " add spell check to autocompletes (invoke with C-N in i-mode)
 set complete-=t                       " dont use tag and includes for autocompletes
@@ -203,6 +206,7 @@ let g:go_fmt_command = "goimports"
 
 autocmd BufRead,TextChanged,TextChangedI *.go call ShowColumnIfLineTooLong(80)
 autocmd BufRead,TextChanged,TextChangedI *.rb call ShowColumnIfLineTooLong(80)
+autocmd BufRead,TextChanged,TextChangedI *.py call ShowColumnIfLineTooLong(120)
 
 " Color the column marking the lengthLimit when the longest line in the file
 " exceeds the lengthLimit
