@@ -19,6 +19,7 @@ Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'nvie/vim-flake8'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
@@ -100,21 +101,20 @@ nnoremap <leader>f :tag <cword><cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
-" ctrlP
+" File & Buffer search
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-nnoremap <leader>t :FZF<CR>
-nnoremap <leader>y :Tags<CR>
 let g:fzf_tags_command = 'ctags .'
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
-nmap K :call fzf#vim#ag(expand('<cword>'))<CR>
-vmap K :call fzf#vim#ag(expand('<cword>'))<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>t :FZF<CR>
+nmap <leader>y :Tags<CR>
 
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+" Search for word under cursor
+nmap Y :Rg<CR>
+
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 " vim-fugitive
 nnoremap <leader>a :A<cr>

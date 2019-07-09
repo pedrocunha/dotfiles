@@ -3,7 +3,7 @@
 /logs/
 /tmp/
 *.svg
-.git
-.zeus*
+.git/
+.zeus
 vendor/
-target/debug/*
+target/debug/
