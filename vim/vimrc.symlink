@@ -116,8 +116,7 @@ nmap Y :Rg<CR>
 
 let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
-" vim-fugitive
-nnoremap <leader>a :A<cr>
+" vim-rails
 nnoremap <leader>v :AV<cr>
 
 nnoremap <leader><leader> <C-w>=
@@ -228,3 +227,14 @@ endfunction
 let g:flake8_show_quickfix=0  "do not show quickfix, just hover you lazy
 autocmd BufWritePost *.py call flake8#Flake8()
 " ++++++++++++++++ Flake8 settings
+
+nmap <leader>a :call ToggleAlternateFile()<cr>
+function! ToggleAlternateFile()
+  let extension = expand('%:e')
+
+  if extension == 'go'
+    execute "GoAlternate"
+  elseif extension == 'rb'
+    execute "A"
+  endif
+endfunction
