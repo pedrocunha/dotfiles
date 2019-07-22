@@ -7,3 +7,5 @@
 .zeus
 vendor/
 target/debug/
+*__pycache__*
+*.pytest*
