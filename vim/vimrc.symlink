@@ -174,8 +174,8 @@ set complete-=i                       " (gives better performance)
 set iskeyword+=- " foo-bar is a whole word "
 
 " Annoying bindings
-nmap <S-Down> <nop>
-nmap <S-Up> <nop>
+noremap <S-Down> <nop>
+noremap <S-Up> <nop>
 
 " +++++++++++++++++ golang settings
 let g:go_doc_keywordprg_enabled = 0
