@@ -1,0 +1,40 @@
+export ZSH=$HOME/.dotfiles
+
+# path always first
+source $ZSH/zsh/path.zsh
+
+source $ZSH/zsh/aliases.zsh
+source $ZSH/zsh/config.zsh
+source $ZSH/zsh/prompt.zsh
+source $ZSH/zsh/window.zsh
+
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
+
+export EDITOR='vim'
+
+bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
+bindkey -e '<ctrl-v><ctrl-e>' end-of-line
+
+# Lazy load rbenv
+if type rbenv &> /dev/null; then
+  local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
+  export PATH="${RBENV_SHIMS}:${PATH}"
+  source $(dirname $(greadlink -f `whence -p rbenv`))/../completions/rbenv.zsh
+  function rbenv() {
+    unset -f rbenv > /dev/null 2>&1
+    eval "$(command rbenv init -)"
+    rbenv "$@"
+  }
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

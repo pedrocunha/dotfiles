@@ -10,4 +10,4 @@ brew update
 # Install homebrew packages
 $ZSH/homebrew/install.sh 2>&1
 
-brew upgrade vim ctags rbenv ruby-build fzf ripgrep
+brew upgrade coreutils vim ctags rbenv ruby-build fzf ripgrep
