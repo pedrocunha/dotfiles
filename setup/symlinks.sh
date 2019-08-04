@@ -35,9 +35,9 @@ do
     user "file already exists: `basename $source`, what do you want to do? [s]kip, [o]verwrite, [b]ackup?"
     read -n 1 action
 
-    local skip=false
-    local overwrite=false
-    local backup=false
+    skip=false
+    overwrite=false
+    backup=false
 
     case "$action" in
       s )
