@@ -1,31 +1,12 @@
-# shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/code
-export LOLCOMMITS_DIR="$HOME/Dropbox (Pedro)/lolcommits"
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+# path always first
+source $ZSH/zsh/path.zsh
 
-# all of our zsh files
-typeset -U config_files
-config_files=($ZSH/**/*.zsh)
-
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
-
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+source $ZSH/zsh/aliases.zsh
+source $ZSH/zsh/config.zsh
+source $ZSH/zsh/prompt.zsh
+source $ZSH/zsh/window.zsh
 
 autoload -Uz compinit
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
@@ -34,17 +15,26 @@ else
   compinit -C
 fi
 
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
 
-unset config_files
+export EDITOR='vim'
 
 bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
 bindkey -e '<ctrl-v><ctrl-e>' end-of-line
 
-eval "$(rbenv init -)"
+# Lazy load rbenv
+if type rbenv &> /dev/null; then
+  local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
+  export PATH="${RBENV_SHIMS}:${PATH}"
+  source $(dirname $(greadlink -f `whence -p rbenv`))/../completions/rbenv.zsh
+  function rbenv() {
+    unset -f rbenv > /dev/null 2>&1
+    eval "$(command rbenv init -)"
+    rbenv "$@"
+  }
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
