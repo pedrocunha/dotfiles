@@ -130,14 +130,6 @@ if filereadable("zeus.json")
   let g:vroom_use_zeus = 1
 endif
 
-if filereadable("../../zeus.json")
-  let g:vroom_use_zeus = 1
-endif
-
-if filereadable("bin/spring")
-  let g:vroom_use_spring = 1
-endif
-
 if filereadable("bin/rspec")
   let g:vroom_use_binstubs = 1
 endif
