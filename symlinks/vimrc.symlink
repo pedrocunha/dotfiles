@@ -51,7 +51,7 @@ set undoreload=10000            " number of lines to save for undo
 
 "" A must for fast scrolling
 set nocursorcolumn
-set cursorline
+set nocursorline
 set norelativenumber
 syntax sync minlines=256
 set ttyfast

@@ -1,7 +1,11 @@
-set-option -g default-shell /bin/zsh
+set -sg default-shell /bin/zsh
 
 # re-number windows when one is closed
-set -g renumber-windows on
+set -sg renumber-windows on
+
+# Speedier tmux
+set -sg escape-time 0
+set -sg status-interval 10
 
 # Rebind & directly to kill window (and avoid confirmation prompt)
 bind-key & kill-window
@@ -10,3 +14,4 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key h select-pane -L
 bind-key l select-pane -R
+
