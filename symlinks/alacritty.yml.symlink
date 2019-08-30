@@ -435,6 +435,8 @@ mouse:
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `None` action.
 key_bindings:
+  - {key: Key3, mods: Alt, chars: "#"}
+
   # Only useful within tmux
   # Window
   - {key: T,     mods: Command, chars: "\x02\x63"} # New window
