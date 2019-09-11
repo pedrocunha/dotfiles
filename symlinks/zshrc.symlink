@@ -37,4 +37,10 @@ if type rbenv &> /dev/null; then
   }
 fi
 
+source /usr/local/share/antigen/antigen.zsh
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+antigen apply
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

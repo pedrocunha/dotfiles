@@ -6,4 +6,4 @@
 # to make sure you're on the latest and greatest.
 # Upgrade homebrew
 brew update
-brew upgrade coreutils vim ctags rbenv ruby-build fzf ripgrep
+brew upgrade coreutils vim ctags rbenv ruby-build fzf ripgrep antigen
