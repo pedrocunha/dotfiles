@@ -1,24 +1,22 @@
 call plug#begin()
-Plug 'vim-scripts/kwbdi.vim'
-Plug 'vim-scripts/closetag.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
-Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'zerowidth/vim-copy-as-rtf'
-Plug 'skalnik/vim-vroom'
-Plug 'maxboisvert/vim-simple-complete'
+Plug 'kien/ctrlp.vim'
+Plug 'janko/vim-test'
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'jremmen/vim-ripgrep'
+Plug 'maxboisvert/vim-simple-complete'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surrond'
+Plug 'tpope/vim-rails'
+Plug 'vim-scripts/kwbdi.vim'
+Plug 'vim-scripts/closetag.vim'
+Plug 'w0rp/ale'
+Plug 'zerowidth/vim-copy-as-rtf'
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
@@ -126,16 +124,12 @@ au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 au BufRead,BufNewFile *.god setfiletype ruby
 
-if filereadable("zeus.json")
-  let g:vroom_use_zeus = 1
-endif
-
-if filereadable("bin/rspec")
-  let g:vroom_use_binstubs = 1
-endif
-
-let g:vroom_spec_command  = 'rspec --format progress --color'
-let g:vroom_rspec_version = '3.x'
+let test#strategy = "vimterminal"
+let test#go#gotest#options = '--mod=vendor'
+let test#python#runner = 'pytest'
+let g:test#preserve_screen = 1
+nmap <silent> <leader>R :TestNearest<CR>
+nmap <silent> <leader>r :TestFile<CR>
 
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
