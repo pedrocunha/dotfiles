@@ -15,3 +15,18 @@ bind-key k select-pane -U
 bind-key h select-pane -L
 bind-key l select-pane -R
 
+#### Layout settings ####
+setw -g pane-border-style "bg=default,fg=colour15"
+setw -g pane-active-border-style "bg=default,fg=colour15"
+
+set -g status-justify left
+set -g status-bg default
+set -g status-fg colour255
+set -g status-left "[w]"
+
+setw -g window-status-format "#[fg="white"] #I: #W "
+setw -g window-status-separator ""
+setw -g window-status-current-format "#[fg="black",bg="colour255"] #I: #W "
+
+set -g status-right "#[fg="white"] %d/%m #[fg="black",bg="colour255"] %H:%M "
+####
