@@ -9,6 +9,7 @@ export PATH="/Applications/SnowSQL.app/Contents/MacOS/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang
+export GOPATH="$HOME/code/go"
 export PATH="$GOPATH/bin:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
