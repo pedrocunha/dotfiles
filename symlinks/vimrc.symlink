@@ -3,7 +3,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'kien/ctrlp.vim'
 Plug 'janko/vim-test'
-Plug 'junegunn/fzf',        { 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'maxboisvert/vim-simple-complete'
@@ -11,7 +11,7 @@ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surrond'
+Plug 'https://tpope.io/vim/surround.git'
 Plug 'tpope/vim-rails'
 Plug 'vim-scripts/kwbdi.vim'
 Plug 'vim-scripts/closetag.vim'
