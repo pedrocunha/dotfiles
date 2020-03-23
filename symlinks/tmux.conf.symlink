@@ -15,6 +15,9 @@ bind-key k select-pane -U
 bind-key h select-pane -L
 bind-key l select-pane -R
 
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
+
 #### Layout settings ####
 setw -g pane-border-style "bg=default,fg=colour15"
 setw -g pane-active-border-style "bg=default,fg=colour15"
