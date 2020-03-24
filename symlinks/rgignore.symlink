@@ -5,10 +5,11 @@
 *.svg
 .git/
 .zeus
-vendor/
+node_modules/
 target/debug/
 target/run/
 target/compiled/
+vendor/
 *bootsnap-*
 *__pycache__*
 *.pytest*

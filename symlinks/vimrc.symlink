@@ -12,12 +12,17 @@ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
-Plug 'https://tpope.io/vim/surround.git'
 Plug 'tpope/vim-rails'
 Plug 'vim-scripts/kwbdi.vim'
 Plug 'vim-scripts/closetag.vim'
 Plug 'w0rp/ale'
 Plug 'zerowidth/vim-copy-as-rtf'
+
+"" Javascript plugins
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
+Plug 'mxw/vim-jsx'
+
 call plug#end()
 
 set nocompatible                " choose no compatibility with legacy vi
@@ -218,13 +223,13 @@ function! ShowColumnIfLineTooLong(lengthLimit)
   endif
 endfunction
 
-" ++++++++++++++++ Lint settings
+" ++++++++++++++++ ALE settings
 let g:ale_sign_column_always = 1
 let g:ale_fixers = {
 \   'ruby': ['mri', 'rubocop'],
 \   'python': ['flake8'],
 \}
-" ++++++++++++++++ Lint settings
+" ++++++++++++++++ ALE settings
 
 nmap <leader>a :call ToggleAlternateFile()<cr>
 function! ToggleAlternateFile()
