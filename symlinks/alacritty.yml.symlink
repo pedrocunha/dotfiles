@@ -28,7 +28,7 @@ window:
     y: 0
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true
+  dynamic_padding: false
 
   # Window decorations
   #
@@ -430,3 +430,7 @@ key_bindings:
   - {key: Right, mods: Command|Option, chars: "\x02\x6c"}
   - {key: Down,  mods: Command|Option, chars: "\x02\x6a"}
   - {key: Left,  mods: Command|Option, chars: "\x02\x68"}
+
+  # Portuguese keyboard layout config
+  - {key: LBracket,  mods: Shift|Option, chars: "\x7b"}
+  - {key: RBracket,  mods: Shift|Option, chars: "\x7d"}
