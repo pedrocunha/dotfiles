@@ -6,10 +6,9 @@
 .git/
 .zeus
 node_modules/
-target/debug/
-target/run/
-target/compiled/
+target/
 vendor/
 *bootsnap-*
 *__pycache__*
 *.pytest*
+.DS_Store*
