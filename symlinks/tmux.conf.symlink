@@ -1,5 +1,8 @@
 set -sg default-shell /bin/zsh
 
+set -g default-terminal "screen-256color" # or tmux-256color
+set -ga terminal-overrides ",*256col*:Tc"
+
 # re-number windows when one is closed
 set -sg renumber-windows on
 
