@@ -62,3 +62,5 @@
   driver = git merge-po %O %A %B
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[pull]
+	ff = only
