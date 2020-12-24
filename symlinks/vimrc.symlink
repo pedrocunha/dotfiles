@@ -232,11 +232,20 @@ function! ShowColumnIfLineTooLong(lengthLimit)
 endfunction
 
 " ++++++++++++++++ ALE settings
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_fixers = {
-\   'ruby': ['mri', 'rubocop'],
-\   'python': ['flake8'],
-\}
+      \'ruby': ['rubocop'],
+      \'javascript': ['prettier'],
+      \'typescript': ['prettier'],
+      \'css': ['prettier'],
+      \}
+let g:ale_fix_on_save = 1
+let g:ale_set_signs = 1
+" let g:ale_set_highlights = 1
+" highlight ALEErrorLine cterm=underline ctermbg=darkred ctermfg=white
+" highlight ALEWarningLine ctermbg=darkyellow ctermfg=black
+" highlight link ALEWarningLine warning
+" highlight ALEWarningLine cterm=underline ctermbg=darkred ctermfg=white
 " ++++++++++++++++ ALE settings
 
 nmap <leader>a :call ToggleAlternateFile()<cr>
@@ -250,7 +259,6 @@ function! ToggleAlternateFile()
   endif
 endfunction
 
-let g:gitgutter_map_keys = 0
 " ++++++++++++++++ COC settings
 set shortmess+=c
 
