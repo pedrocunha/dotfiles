@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 export ZSH=$HOME/.dotfiles
 
 # path always first
@@ -9,11 +10,10 @@ source $ZSH/zsh/prompt.zsh
 source $ZSH/zsh/window.zsh
 
 autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+for dump in ~/.zcompdump(N.mh+24); do
   compinit
-else
-  compinit -C
-fi
+done
+compinit -C
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -21,9 +21,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 export EDITOR='vim'
-
-bindkey -e '<ctrl-v><ctrl-a>' beginning-of-line
-bindkey -e '<ctrl-v><ctrl-e>' end-of-line
 
 # Lazy load rbenv
 if type rbenv &> /dev/null; then
@@ -37,10 +34,14 @@ if type rbenv &> /dev/null; then
   }
 fi
 
-source /usr/local/share/antigen/antigen.zsh
 export NVM_LAZY_LOAD=true
-antigen bundle lukechilds/zsh-nvm
-antigen apply
+export NVM_COMPLETION=true
 
+source "${HOME}/.zgen/zgen.zsh"
+if ! zgen saved; then
+  echo "Creating a zgen save"
+  zgen load lukechilds/zsh-nvm
+  zgen save
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
