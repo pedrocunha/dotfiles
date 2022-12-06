@@ -1,5 +1,5 @@
 [user]
-  email = pkunha@gmail.com
+  email = p.eduardo.cunha@gmail.com
   name = Pedro Cunha
 [merge]
   tool = opendiff
@@ -22,11 +22,8 @@
   changed = green
   untracked = cyan
 [alias]
-  br = branch
+  branches = branch --sort=-committerdate --format='%(color:bold)%(color:yellow)%(authordate:relative) %(color:white)%(color:bold)%(refname:short)'
   df = diff
-  lg = log -p
-  st = status -sb
-  ci = commit
   co = checkout
   staged = diff --cached
   unstaged = diff
@@ -34,7 +31,6 @@
   logline = log --pretty=oneline
   amend = commit --amend
   fixup = commit --amend --reuse-message HEAD
-  plre = pull --rebase
   unstage = reset HEAD
   last = log -p -n1
   today = log --since='1 Day Ago'
@@ -42,25 +38,25 @@
   me = log --author='Pedro Cunha'
   ctags = !.git/hooks/ctags
   prune-remotes = remote prune origin
-  lol = log --pretty=oneline --abbrev-commit --graph --decorate
-  pf = push --force-with-lease
 [format]
   pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 [core]
   legacyheaders = false
-  editor = vim
+	editor = nvim
+  excludesfile = /Users/pedrocunha/.gitignore
 [push]
-	default = current
+  default = current
 [mergetool]
   keepBackup = false
 [init]
   templatedir = ~/.git_template
+	defaultBranch = main
 [apply]
   whitespace = nowarn
 [merge "pofile"]
   name = Gettext merge driver
   driver = git merge-po %O %A %B
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [pull]
-	ff = only
+  ff = only

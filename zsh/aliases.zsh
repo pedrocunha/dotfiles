@@ -1,6 +1,7 @@
 alias reload!='. ~/.zshrc'
 
 alias python=python3
+alias vim=nvim
 
 # grc overides for ls
 # requires "brew install coreutils"

@@ -1,45 +1,50 @@
+let g:ale_disable_lsp = 1
 call plug#begin()
-Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'kien/ctrlp.vim'
-Plug 'janko/vim-test'
+Plug 'vim-test/vim-test'
+Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'jremmen/vim-ripgrep'
-Plug 'maxboisvert/vim-simple-complete'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'kien/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rails'
-Plug 'vim-scripts/kwbdi.vim'
+Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/closetag.vim'
+Plug 'vim-scripts/kwbdi.vim'
 Plug 'w0rp/ale'
-Plug 'zerowidth/vim-copy-as-rtf'
 
 "" Javascript plugins
 Plug 'pangloss/vim-javascript'
-Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
 
+Plug 'https://tpope.io/vim/fugitive.git'
+Plug 'https://tpope.io/vim/surround.git'
 call plug#end()
 
-set nocompatible                " choose no compatibility with legacy vi
 syntax enable
+filetype plugin indent on       " load file type plugins + indentation
+
+set nocompatible                " choose no compatibility with legacy vi
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 set nobackup                    " don't want no backup files
 set noswapfile                  " no swap files
-filetype plugin indent on       " load file type plugins + indentation
+set number                      " show line numbers
 
 "" Whitespace
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
-set list listchars=tab:→\ ,trail:·
 
 "" Searching
 set hlsearch                    " highlight matches
@@ -53,46 +58,22 @@ set undodir=~/.vim/undo         " where to save undo histories
 set undolevels=1000             " How many undos
 set undoreload=10000            " number of lines to save for undo
 
-"" A must for fast scrolling
-set nocursorcolumn
-set nocursorline
-set norelativenumber
-syntax sync minlines=256
-set ttyfast
-set ttyscroll=3
-set lazyredraw
-set number " show line numbers
-
-"" :e file<tab> shows menu
 set wildmenu
-
-"" use old regex engine
-set re=1
-
+set wildmode=longest:full,full
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
 set shell=/bin/sh
+set completeopt=noinsert,menuone,noselect
 
-" Store temporary files in a central spot
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" Fix slow O inserts
-set timeout timeoutlen=1000 ttimeoutlen=100
-
-set updatetime=100
-set hidden
+"" Misc
+set noshowmatch " do not show parenthesis/brackets blocks
 
 if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-
-" This is only necessary if you use "set termguicolors".
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-autocmd vimenter * colorscheme gruvbox
+colorscheme molokai
 
 " Delete buffers
 nmap <leader>d <Plug>Kwbd
@@ -112,7 +93,7 @@ nnoremap Q :quit<CR>
 nnoremap <leader>/ :Explore .<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>f :tag <cword><cr>
-nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 
 " File & Buffer search
@@ -142,10 +123,12 @@ au BufRead,BufNewFile Gemfile* setfiletype ruby
 au BufRead,BufNewFile *.ru setfiletype ruby
 au BufRead,BufNewFile *.god setfiletype ruby
 
-let test#strategy = "vimterminal"
-let test#go#gotest#options = '--mod=vendor'
+let test#strategy = "neovim"
+let g:test#neovim#start_normal = 1
+let test#go#gotest#options = '--mod=vendor -race'
 let test#python#runner = 'pytest'
 let g:test#preserve_screen = 1
+
 nmap <silent> <leader>R :TestNearest<CR>
 nmap <silent> <leader>r :TestFile<CR>
 
@@ -207,7 +190,6 @@ let g:go_highlight_types = 1
 let g:go_fmt_fail_silently = 1
 
 nnoremap <leader>g :GoTest<cr>
-nnoremap <leader>gd :GoDoc<cr>
 
 let g:go_fmt_command = "goimports"
 " +++++++++++++++++ golang settings
@@ -233,19 +215,18 @@ endfunction
 
 " ++++++++++++++++ ALE settings
 let g:ale_sign_column_always = 0
+let g:ale_linters = {
+      \   'python': ['flake8'],
+      \}
 let g:ale_fixers = {
-      \'ruby': ['rubocop'],
       \'javascript': ['prettier'],
       \'typescript': ['prettier'],
       \'css': ['prettier'],
+      \'python': ['black'],
       \}
 let g:ale_fix_on_save = 1
 let g:ale_set_signs = 1
-" let g:ale_set_highlights = 1
-" highlight ALEErrorLine cterm=underline ctermbg=darkred ctermfg=white
-" highlight ALEWarningLine ctermbg=darkyellow ctermfg=black
-" highlight link ALEWarningLine warning
-" highlight ALEWarningLine cterm=underline ctermbg=darkred ctermfg=white
+let g:ale_completion_enabled = 1
 " ++++++++++++++++ ALE settings
 
 nmap <leader>a :call ToggleAlternateFile()<cr>
@@ -259,39 +240,60 @@ function! ToggleAlternateFile()
   endif
 endfunction
 
-" ++++++++++++++++ COC settings
-set shortmess+=c
+" ++++++++++++++++ COQ settings
+let g:coq_settings = { 'auto_start': 'shut-up', 'keymap.recommended': v:false}
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+" let g:coq_settings = { "keymap.recommended": v:false }
 
-" Remap <C-d> and <C-u> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-d>"
-  nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-u>"
-endif
+" Keybindings
+ino <silent><expr> <Esc>   pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
+ino <silent><expr> <BS>    pumvisible() ? "\<C-e><BS>"  : "\<BS>"
+ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"
+ino <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+ino <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<BS>"
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+lua << EOF
+require'lspconfig'.gopls.setup{}
+local opts = { noremap=true, silent=true }
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
 
-" ++++++++++++++++ COC settings
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'gopls' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+EOF
+
+" ++++++++++++++++ JS settings
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" ++++++++++++++++ Rust settings
+let g:rustfmt_autosave = 1
+
+" ++++++++++++++++ Python settings
+autocmd BufWritePre *.py execute ':Black'

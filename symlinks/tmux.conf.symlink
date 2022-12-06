@@ -26,14 +26,20 @@ bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 setw -g pane-border-style "bg=default,fg=colour15"
 setw -g pane-active-border-style "bg=default,fg=colour15"
 
+set -g status-left ""
 set -g status-justify left
-set -g status-bg default
-set -g status-fg colour255
-set -g status-left "[w]"
+# set -g status-right " "
 
-setw -g window-status-format "#[fg="white"] #I: #W "
-setw -g window-status-separator ""
-setw -g window-status-current-format "#[fg="black",bg="colour255"] #I: #W "
+set-option -g status-style fg=white,bg=default
+set-window-option -g window-status-style fg="#666666",bg=default
+set-window-option -g window-status-current-style fg=white,bg=default,bright
+set-option -g message-style fg=white,bg=black,bright
 
-set -g status-right "#[fg="white"] %d/%m #[fg="black",bg="colour255"] %H:%M "
+set-option -g status-position bottom
+setw -g window-status-format         '#[fg="white"] #(echo "#{pane_current_command}")'
+setw -g window-status-current-format '#[fg="black",bg="colour255"] #(echo "#{pane_current_command}")'
+set -g status-right '%d/%m %H:%M '
 ####
+
+# Increase terminal buffer
+set-option -g history-limit 5000

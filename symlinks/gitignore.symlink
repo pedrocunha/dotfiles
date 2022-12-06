@@ -4,3 +4,8 @@
 *.swp
 *.rbc
 *.hprof
+
+.bloop/
+.metals/
+project/metals.sbt
+project/project/
