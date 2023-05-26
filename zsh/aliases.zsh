@@ -1,4 +1,5 @@
 alias reload!='. ~/.zshrc'
+alias ctags="`brew --prefix`/bin/ctags"
 
 alias python=python3
 alias vim=nvim
