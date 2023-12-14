@@ -15,7 +15,6 @@
 /logs/
 /tmp/
 VENV/
-build/
 node_modules/
 obj/*
 target/
