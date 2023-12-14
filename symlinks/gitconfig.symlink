@@ -1,8 +1,6 @@
 [user]
   email = p.eduardo.cunha@gmail.com
   name = Pedro Cunha
-[merge]
-  tool = opendiff
 [color]
   status = auto
   diff = auto
@@ -42,21 +40,26 @@
   pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 [core]
   legacyheaders = false
-	editor = nvim
+  editor = nvim
   excludesfile = /Users/pedrocunha/.gitignore
 [push]
   default = current
+	autoSetupRemote = true
 [mergetool]
   keepBackup = false
 [init]
   templatedir = ~/.git_template
-	defaultBranch = main
+  defaultBranch = main
 [apply]
   whitespace = nowarn
-[merge "pofile"]
-  name = Gettext merge driver
-  driver = git merge-po %O %A %B
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [pull]
   ff = only
+[merge]
+  tool = nvimdiff
+[merge "pofile"]
+  name = Gettext merge driver
+  driver = git merge-po %O %A %B
+[mergetool]
+  prompt = false
