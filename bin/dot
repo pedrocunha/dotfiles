@@ -6,4 +6,4 @@
 # to make sure you're on the latest and greatest.
 # Upgrade homebrew
 brew update
-brew upgrade antigen coreutils ctags fzf go nvim rbenv ripgrep ruby-build rust zsh
+brew upgrade antigen coreutils ctags fzf go nvim rbenv ripgrep ruby-build rust zsh tmux
