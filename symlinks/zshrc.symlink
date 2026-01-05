@@ -21,9 +21,7 @@ export EDITOR='nvim'
 
 # Lazy load rbenv
 if type rbenv &> /dev/null; then
-  local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
-  export PATH="${RBENV_SHIMS}:${PATH}"
-  source $(dirname $(greadlink -f `whence -p rbenv`))/../completions/rbenv.zsh
+  # source $(dirname $(greadlink -f `whence -p rbenv`))/../completions/rbenv.zsh
   function rbenv() {
     unset -f rbenv > /dev/null 2>&1
     eval "$(command rbenv init -)"
@@ -31,14 +29,15 @@ if type rbenv &> /dev/null; then
   }
 fi
 
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-
-source "${HOME}/.zgen/zgen.zsh"
-if ! zgen saved; then
-  echo "Creating a zgen save"
-  zgen load lukechilds/zsh-nvm
-  zgen save
+OP_PLUGINS_PATH="${HOME}/.config/op/plugins.sh"
+if [ -f "$op_plugins_path" ]; then
+  source "$op_plugins_path"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export PKG_CONFIG_PATH=/opt/homebrew/Cellar/openssl@1.1/1.1.1v/lib/pkgconfig

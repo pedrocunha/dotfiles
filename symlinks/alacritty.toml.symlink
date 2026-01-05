@@ -1,0 +1,69 @@
+[font]
+normal.family = "FiraCode Nerd Font"
+normal.style = "Regular"
+
+bold.family = "FiraCode Nerd Font"
+bold.style = "Bold"
+
+italic.family = "FiraCode Nerd Font"
+italic.style = "Italic"
+
+size = 13.0
+
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+primary.background = "#282828"
+primary.foreground = "#fdf4c1"
+
+normal.black = "#282828"
+normal.red = "#9d0006"
+normal.green = "#79740e"
+normal.yellow = "#b57614"
+normal.blue = "#076678"
+normal.magenta = "#8f3f71"
+normal.cyan = "#00a7af"
+normal.white = "#fdf4c1"
+
+bright.black = "#32302f"
+bright.red = "#fb4933"
+bright.green = "#b8bb26"
+bright.yellow = "#fabd2f"
+bright.blue = "#83a598"
+bright.magenta = "#d3869b"
+bright.cyan = "#3fd7e5"
+bright.white = "#ffffc8"
+
+dim.black = "#1d2021"
+dim.red = "#421e1e"
+dim.green = "#232b0f"
+dim.yellow = "#4d3b27"
+dim.blue = "#2b3c44"
+dim.magenta = "#4e3d45"
+dim.cyan = "#205161"
+dim.white = "#f4e8ba"
+
+[bell]
+animation = "EaseOutExpo"
+
+[terminal]
+#shell.program = "/bin/zsh"
+#shell.args = ["- --login"]
+
+[keyboard]
+bindings = [
+  { key = "T", mods = "Command", chars = "\u0002c" },
+  { key = "W", mods = "Command", chars = "\u0002&" },
+  { key = "Left", mods = "Command", chars = "\u0002p" },
+  { key = "Right", mods = "Command", chars = "\u0002n" },
+  { key = "D", mods = "Command", chars = "\u0002%" },
+  { key = "D", mods = "Command|Shift", chars = "\u0002\u0022" },
+  { key = "Up", mods = "Command|Option", chars = "\u0002k" },
+  { key = "Right", mods = "Command|Option", chars = "\u0002l" },
+  { key = "Down", mods = "Command|Option", chars = "\u0002j" },
+  { key = "Left", mods = "Command|Option", chars = "\u0002h" },
+  { key = "N", mods = "Command|Option", action = "CreateNewWindow" },
+]

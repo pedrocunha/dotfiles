@@ -6,4 +6,6 @@
 # to make sure you're on the latest and greatest.
 # Upgrade homebrew
 brew update
-brew upgrade antigen coreutils ctags fzf go nvim rbenv ripgrep ruby-build rust zsh tmux
+brew install fzf git-delta go node nvim rbenv ripgrep ruby-build zsh tmux
+
+brew install --cask font-fira-code

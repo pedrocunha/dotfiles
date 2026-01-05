@@ -1,44 +1,64 @@
-set -sg default-shell /bin/zsh
+# Use default shell
 set -g default-command "${SHELL}"
 
-set -g default-terminal "screen-256color" # or tmux-256color
-set -ga terminal-overrides ",*256col*:Tc"
+# True color support
+set -sa terminal-features ",alacritty:RGB"
+set -g default-terminal "tmux-256color"
+set -ga terminal-features ",alacritty:usstyle"
+# set -ga terminal-overrides ",*256col*:Tc"
 
-# re-number windows when one is closed
-set -sg renumber-windows on
+# Re-number windows when one is closed
+set -g renumber-windows on
 
-# Speedier tmux
+# Faster escape (for vim)
 set -sg escape-time 0
-set -sg status-interval 10
+set -g status-interval 10
 
-# Rebind & directly to kill window (and avoid confirmation prompt)
+# Mouse support (scroll, resize, select panes)
+set -g mouse on
+
+# Focus events (for vim autoread)
+set -g focus-events on
+
+# Clipboard integration
+set -g set-clipboard on
+
+# Kill window without confirmation
 bind-key & kill-window
 
+# Vim-style pane navigation
 bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key h select-pane -L
 bind-key l select-pane -R
 
+# Swap windows with Ctrl+Shift+Arrow
 bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
 bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
-#### Layout settings ####
-setw -g pane-border-style "bg=default,fg=colour15"
-setw -g pane-active-border-style "bg=default,fg=colour15"
+# Resize panes with Alt+Arrow
+bind -n M-Up resize-pane -U 5
+bind -n M-Down resize-pane -D 5
+bind -n M-Left resize-pane -L 5
+bind -n M-Right resize-pane -R 5
 
+# Status bar style
 set -g status-left ""
-set -g status-right '%d/%m %H:%M '
+set -g status-right '%d/%m %H:%M'
 set -g status-justify left
+set -g status-position bottom
+set -g status-style fg=white,bg=default
+set -g message-style fg=white,bg=black,bright
 
-set-option -g status-style fg=white,bg=default
-set-window-option -g window-status-style fg="#666666",bg=default
-set-window-option -g window-status-current-style fg=white,bg=default,bright
-set-option -g message-style fg=white,bg=black,bright
+# Pane borders
+setw -g pane-border-style fg=colour15
+setw -g pane-active-border-style fg=colour15
 
-set-option -g status-position bottom
-setw -g window-status-format         '#[fg="white"] #(echo "#{b:pane_current_path}:#{pane_current_command}")'
-setw -g window-status-current-format '#[fg="black",bg="colour255"] #(echo "#{b:pane_current_path}:#{pane_current_command}")'
-####
+# Window status
+setw -g window-status-format         '#[fg=white]#{b:pane_current_path}:#{pane_current_command}'
+setw -g window-status-current-format '#[fg=white,bg=black]#{b:pane_current_path}:#{pane_current_command}'
 
-# Increase terminal buffer
-set-option -g history-limit 5000
+# Larger scrollback buffer
+set -g history-limit 50000
+
+bind-key -n C-l source-file ~/.tmux.conf

@@ -1,54 +1,32 @@
 [user]
   email = p.eduardo.cunha@gmail.com
   name = Pedro Cunha
-[color]
-  status = auto
-  diff = auto
-  branch = auto
-  interactive = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
 [alias]
   branches = branch --sort=-committerdate --format='%(color:bold)%(color:yellow)%(authordate:relative) %(color:white)%(color:bold)%(refname:short)'
-  df = diff
   co = checkout
   staged = diff --cached
-  unstaged = diff
   both = diff HEAD
   logline = log --pretty=oneline
   amend = commit --amend
   fixup = commit --amend --reuse-message HEAD
   unstage = reset HEAD
-  last = log -p -n1
-  today = log --since='1 Day Ago'
-  recent = log --stat --since='3 Hours Ago' --graph --pretty=oneline --abbrev-commit --date=relative
   me = log --author='Pedro Cunha'
-  ctags = !.git/hooks/ctags
   prune-remotes = remote prune origin
 [format]
   pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 [core]
-  legacyheaders = false
   editor = nvim
-  excludesfile = /Users/pedrocunha/.gitignore
+  excludesfile = ~/.gitignore
+  pager = delta
+[delta]
+  navigate = true
+  line-numbers = true
+[interactive]
+  diffFilter = delta --color-only
 [push]
   default = current
-	autoSetupRemote = true
-[mergetool]
-  keepBackup = false
+  autoSetupRemote = true
 [init]
-  templatedir = ~/.git_template
   defaultBranch = main
 [apply]
   whitespace = nowarn
@@ -58,8 +36,11 @@
   ff = only
 [merge]
   tool = nvimdiff
-[merge "pofile"]
-  name = Gettext merge driver
-  driver = git merge-po %O %A %B
 [mergetool]
+  keepBackup = false
   prompt = false
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f

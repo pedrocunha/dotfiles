@@ -5,24 +5,15 @@ typeset -U PATH path
 export GOPATH="$HOME/code/go"
 
 local FUTURE_PATH="./bin"
-
 FUTURE_PATH="$FUTURE_PATH:$ZSH/bin"
-FUTURE_PATH="$FUTURE_PATH:/$HOME/.local/bin"
+FUTURE_PATH="$FUTURE_PATH:$HOME/.local/bin"
 FUTURE_PATH="$FUTURE_PATH:/opt/homebrew/bin"
 FUTURE_PATH="$FUTURE_PATH:$GOPATH/bin"
 FUTURE_PATH="$FUTURE_PATH:/Applications/Postgres.app/Contents/Versions/14/bin"
 FUTURE_PATH="$FUTURE_PATH:/opt/homebrew/opt/openjdk/bin"
-FUTURE_PATH="$FUTURE_PATH:/$HOME/Library/Python/3.9/bin" # python
+FUTURE_PATH="$FUTURE_PATH:$HOME/Library/Python/3.9/bin"
+FUTURE_PATH="$FUTURE_PATH:${RBENV_ROOT:-$HOME/.rbenv}/shims"
 
 export PATH="$FUTURE_PATH:$PATH"
-
-# export PATH="./bin:$PATH"
-# export PATH="$ZSH/bin:$PATH"
-# export PATH="$PATH:/$HOME/.local/bin"
-# export PATH="$PATH:/opt/homebrew/bin"
-# export PATH="$PATH:$GOPATH/bin"
-# export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/14/bin"
-# export PATH="$PATH:/opt/homebrew/opt/openjdk/bin"
-# export PATH="$PATH:/$HOME/Library/Python/3.9/bin" # python
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"

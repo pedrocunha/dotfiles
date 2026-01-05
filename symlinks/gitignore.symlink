@@ -9,3 +9,5 @@
 .metals/
 project/metals.sbt
 project/project/
+
+.claude/settings.local.json
